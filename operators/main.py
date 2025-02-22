@@ -6,7 +6,7 @@ import datetime as dt
 import os.path
 from datetime import datetime
 from pathlib import Path
-from secrets import spotify_user_id
+#from secrets import spotify_user_id
 
 import pandas as pd
 import requests
@@ -17,8 +17,8 @@ from yaml_load import yaml_loader
 
 class RetrieveSongs:
     def __init__(self):
-        self.user_id = spotify_user_id  # Spotify username
-        self.spotify_token = ""  # Spotify access token
+        self.user_id = "nickel91"  # Spotify username
+        self.spotify_token = "BQAUHMqcCJsYLI0UzUMqc8laQt42T4TfHLUN_5zkiMDCmBE9WyP244Undx0bW4ETsg5bqnL74-W1WtJL6ViZ0Ju334rHmHjI4E3dxMwUdVNSyH90NJzHmWUURAtdTPi9t9UIZsrcynG8A4u8j6r9ENObVT9qQoqaMygyokCTqmfDGSIpo7n7eR58EqwIbgs5qrrfaVM4livcUZQHbilJ"  # Spotify access token
 
     # Query the postgres database to get the latest played timestamp
     def get_latest_listened_timestamp(self):
@@ -49,7 +49,7 @@ class RetrieveSongs:
             "Authorization": "Bearer {}".format(self.spotify_token),
         }
 
-        latest_timestamp = RetrieveSongs().get_latest_listened_timestamp()
+        latest_timestamp = dt.datetime.now() #RetrieveSongs().get_latest_listened_timestamp()
         config = yaml_loader()
         songs = config["files"]["songs"]
         genres = config["files"]["genres"]
